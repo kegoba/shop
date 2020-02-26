@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+.registered,.btn, input{
+   margin-top: 2%;
+  margin-bottom: 2%;
+
+}
+
+.login{
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+
+.footer{
+  margin-top:10%;
+ 
+}
+
+
+
+.footer, .menu{
+  background:#87ceeb;
+}
+
+.card{
+  max-width: 500px;
+  
+ 
+  
+}
+.login-input{
+    max-block-size: 300px;
+}
+
+.culture,.gallary{
+  margin-top: 40px;
+}
+
+
+input[type="text"],
+input[type="password"],
+ button[type="submit"]{
+  margin-top:10px ;
+  width: 50%;
+  padding: 10px;
+  border-radius: 40px;
+  outline: none;
+
+ 
+}
+
+
+textarea[type="textarea"]{
+    width: 51%;
+    height: 200px;
+    padding:10px;
+    margin-top: 15px;
+    border-radius: 40px;
+     outline: none;
+     
+   
+}
+
+@media(max-width:700px){
+  input[type="text"],button[type="submit"],  input[type="password"]{
+  margin:1px ;
+  width: 100%!important;
+  padding: 1px;
+   border-radius: 40px;
+    outline: none;
+  }
+}
+
+
+@media (max-width:700px){
+.btn{
+  margin:10px ;
+  width: 100%;
+  padding: 10px;
+border-radius: 40px;
+outline: none;
+  
+  }
+}
+.tittle,.comment, input{
+    text-align: center;
+    align-content: center;
+}
