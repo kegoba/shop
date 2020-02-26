@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { RemoveItem} from "../reducer/Action"
 import { connect } from "react-redux"
+import {Link } from  "react-router-dom"
 
 const MapStateToProps = (state)=>{
     console.log(state.addedItems)
@@ -41,6 +42,12 @@ class Cart extends Component {
             alert("No Item In The Cart") 
         }
      
+    
+    }
+
+    handlePaymentFromAccount(){
+        this.props.history.push("/payment")
+
     }
     render() {
        const items  = this.props.item;
@@ -76,13 +83,22 @@ class Cart extends Component {
                         </div>
                         
                </div>
-                <div className="constainer">
-                    <h4 className="  "> Cost of {items.length}  Item (s) N{cost} </h4>
+                <div className="constainer pay">
+                    <div className="row">
+                        <div className="col">
+                            <h4 className=" btn btn-primary "> Cost of {items.length}  Item (s) N{cost} </h4>
+                        </div>
+                        <div className="col">
+                            <h4 className=" btn btn-primary  " onClick={() => this.handlePayment(this.props.item, this.props.cost)} > Make payment from your wallet </h4>
+                        </div>
+                        <div className="col">
+                            <h4 className=" btn btn-primary  "  > <Link className="text-light"  to={"/payment"}> Make payment from your bank </Link>  </h4>
+                        </div>
+                    </div>
+                    
                 </div>
 
-               <div className="constainer">
-                    <h4 className=" btn btn-primary  " onClick={()=>this.handlePayment (this.props.item, this.props.cost)} > ORDER ITEM  </h4>
-               </div>
+              
               
         </div>
         )

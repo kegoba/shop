@@ -9,16 +9,16 @@ const Footer =()=>{
                 <div className="row">
                     <div className="col">
                         <h4> Location </h4>
-                        <p>  Orhionwon local</p>
+                        <p>  Ikeja local</p>
                         <p>  Govt. Area,  </p>
-                        <p>   Edo State, Nigeria </p>
+                        <p>   Lagos State, Nigeria </p>
 
                     </div>
                     <div className="col">
                         <h4> Contact </h4>
                         <p>  +2347038034761</p>
                         <p>  +2348130888740  </p>
-                        <p> ifo@iruegbede.com</p>
+                        <p> info@kenshop.com</p>
                     </div>
 
                     <div className="col">

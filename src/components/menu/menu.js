@@ -44,12 +44,6 @@ class Menu extends Component {
                                 <ul className="navbar-nav ">
                                 
                                 <li className="nav-item text-left">
-                                    <Link to={"/men"} className="nav-link" > Men's-Wear</Link>
-                                </li>
-                                <li className="nav-item text-left">
-                                    <Link to={"/women"} className="nav-link" > women's-Wear</Link>
-                                </li>
-                                <li className="nav-item text-left">
                                     <Link to={"/cart"} className="nav-link" > Cart</Link>
                                 </li>
                                 <li className="nav-item text-left">
