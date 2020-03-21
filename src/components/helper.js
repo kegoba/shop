@@ -20,5 +20,18 @@ const AppReducer = (state = initial_state, action) => {
 
     } else {return state}
 
+
+
+
 }
+
+
+
+//redirecturl: "http://google.com?trxref=WIyzG0j1Cy8a.sL"
+//trans: "574686363"
+//trxref: "WIyzG0j1Cy8a.sL"
+//reference: "WIyzG0j1Cy8a.sL"
+//status: "success"
+//message: "Success"
+//response: "Approved"
 

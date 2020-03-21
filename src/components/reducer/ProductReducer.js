@@ -19,7 +19,7 @@ import shoe5 from "./image/shoe5.jpg"
 import shoe6 from "./image/shoe6.jpg"
 
 
-import { ADD_TO_CART, REMOVE_ITEM , CHECK_OUT} from "./cart-actions"
+import { ADD_TO_CART, REMOVE_ITEM , BALANCE} from "./cart-actions"
 
  const initial_state = {
     item :[
@@ -45,10 +45,9 @@ import { ADD_TO_CART, REMOVE_ITEM , CHECK_OUT} from "./cart-actions"
     addedItems:[],
     number_of_items : 0,
     total_cost : 0,
+    email: "egobakelvin@gmail.com",
+    balance: 0,
 }
-
-
-
 
 const AppReducer = (state = initial_state, action)=>{
     if(action.type === ADD_TO_CART){
@@ -73,6 +72,7 @@ const AppReducer = (state = initial_state, action)=>{
         let item_exist = state.addedItems.filter(item => item.id !== action.id)
         console.log("remaining item", item_exist)
         let new_cost = (state.total_cost) - (item_to_remove.price) 
+        
         return {
             ...state, 
             addedItems : item_exist,
@@ -82,11 +82,20 @@ const AppReducer = (state = initial_state, action)=>{
         
     
     }
-    if (action.type === CHECK_OUT){
+    if (action.type === BALANCE){
+        const user = state.user.filter(user => user.email === action.email )
+        if(user){
+            const balance = state.user.balance + user.balance
+            console.log(balance)
+
+        return {
+                ...state, balance: balance
+            }
+
+        }
         
     }
-    
-    
+
     else {
         return state
      }

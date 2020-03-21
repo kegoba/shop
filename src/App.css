@@ -32,6 +32,7 @@
 }
 
 
+
 .footer{
   margin-top:10%;
  
@@ -110,4 +111,8 @@ outline: none;
 .tittle,.comment, input{
     text-align: center;
     align-content: center;
+}
+
+.payment{
+margin-top: 50px;
 }

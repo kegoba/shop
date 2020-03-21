@@ -3,6 +3,19 @@ import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
 //import CreatePost from "../createPost/createPost"
 import Home from "../home/Home"
 import Cart from "../cart/Cart"
+import Payment from "../cart/Payment"
+
+
+const Call =(callback)=>{
+    console.log(callback)//Transaction declined. Please use the test card.
+    return(
+        <div>
+            <p className="alert alert-success"> {callback} </p>
+
+        </div>
+    )
+
+}
 
 class Menu extends Component {
     constructor() {
@@ -65,6 +78,8 @@ class Menu extends Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route  path="/cart" component={Cart} />
+                    <Route path="/payment" component={Payment} />
+                    <Route path="/callback" component={Call} />
                 
                     
                 </Switch>

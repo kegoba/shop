@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import { RemoveItem} from "../reducer/Action"
+import { RemoveItem, BALANCE} from "../reducer/Action"
 import { connect } from "react-redux"
 import {Link } from  "react-router-dom"
+import Payment from "./Payment"
 
 const MapStateToProps = (state)=>{
     console.log(state.addedItems)

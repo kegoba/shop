@@ -1,5 +1,5 @@
 
-import { ADD_TO_CART, REMOVE_ITEM, CHECK_OUT} from './cart-actions'
+import { ADD_TO_CART, REMOVE_ITEM, BALANCE} from './cart-actions'
 
  export const AddToCart = (id)=>{
     return{
@@ -18,10 +18,10 @@ id
 })
 
 
-export const checkOut = (id)=>({
-    
-    type: CHECK_OUT,
-    id 
+
+export const Balance =  (email)=>({
+    type : BALANCE ,
+    email
 })
 
 
