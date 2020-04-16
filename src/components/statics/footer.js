@@ -21,23 +21,26 @@ const Footer =()=>{
                         <p> info@kenshop.com</p>
                     </div>
 
-                    <div className="col">
+                    <div className="col-sm ">
                         <h4> social media handle </h4>
                         <div>
-                            <SocialIcon url="https://facebook.com/"> facebook </SocialIcon>
+                            <SocialIcon className="SocialIcon" url="https://facebook.com/"> facebook </SocialIcon>
 
-                        </div>
-                        <div>
-                            <SocialIcon url="https://twitter.com/"> twitter  </SocialIcon>
-                        </div>
-                        <div> 
-                            <SocialIcon url="https://whatsapp.com/"> twitter  </SocialIcon>
+                        
+                    
+                            <SocialIcon className="SocialIcon" url="https://twitter.com/"> twitter  </SocialIcon>
+                        
+                        
+                            <SocialIcon className="SocialIcon" url="https://whatsapp.com/"> twitter  </SocialIcon>
 
                         </div>
                        
                           
                     </div>
                 </div>
+            </div>
+            <div className="container">
+                <p className="text-center"> Copyright @ 2020</p>
             </div>
         </div>
     )

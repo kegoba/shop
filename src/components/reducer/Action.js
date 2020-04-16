@@ -1,19 +1,19 @@
 
-import { ADD_TO_CART, REMOVE_ITEM, BALANCE} from './cart-actions'
+import { ADD_TO_CART, REMOVE_ITEM, BALANCE, SUB_QTY, ADD_QTY, LOGIN, PAY} from './cart-actions'
 
- export const AddToCart = (id)=>{
+export const AddToCart = (product_id)=>{
     return{
         type : ADD_TO_CART,
-        id  
+        product_id 
     }
 }
 
 
 
 
-export const RemoveItem = (id)=>({
+export const RemoveItem = (product_id)=>({
 type : REMOVE_ITEM,
-id
+    product_id
 
 })
 
@@ -24,4 +24,23 @@ export const Balance =  (email)=>({
     email
 })
 
+export const Add_qty =(product_id)=>({
+    type : ADD_QTY,
+    product_id
+})
 
+
+export const Sub_qty =(product_id)=>({
+    type : SUB_QTY,
+    product_id
+})
+
+export const Login_action =(user)=>({
+    type  : LOGIN,
+    user
+})
+
+export const Make_payment = (amount) => ({
+    type: PAY,
+    amount
+})

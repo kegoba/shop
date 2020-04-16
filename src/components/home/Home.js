@@ -2,10 +2,13 @@ import React, { Component } from "react"
 import {connect} from "react-redux"
 import {  Link } from 'react-router-dom'
 import {AddToCart} from "../reducer/Action"
-
+import axios from "axios"
+import {GetProduct} from "../reducer/ProductReducer"
+import {URL} from "../asset/asset"
+import {Alert} from "reactstrap"
+import Gallary from "../gallary/Gallary"
 
 const MapStateToProps =(state)=>{
-    console.log(state, "this state")
     return {
         items : state.item
     }
@@ -14,8 +17,8 @@ const MapStateToProps =(state)=>{
 
 const MapDispatchToProps= (dispatch)=>({
     
-    AddToCart : (id)=>{
-        dispatch(AddToCart(id))
+    AddToCart: (product_id)=>{
+        dispatch(AddToCart(product_id))
         
     }
 
@@ -26,78 +29,113 @@ class Home extends Component {
         super()
         this.handleToCart = this.handleToCart.bind(this)
         this.state = {
-            item: [],
-            exsit : false,
+            items:[],
+            men : [],
+            women:[],
             message: "",
-            msg : false
+            show : false,
 
         }
 
     }
-  
 
     componentDidMount(){
-       // localStorage.removeItem("product")
-       
-    }
-
-    handleToCart(id) {
-    
-     this.props.AddToCart(id)
-     this.setState({
-         message: "Item Added Successfully"
-     })
-
-       
-
-    }
-
-    render() {
-       let message = this.state.message
-       let item  = this.props.items;
-       let exist = this.state.exsit;
-        return (
-        <div>    
-                  <h1> products  </h1>
-                <p className="alert-success"> {message} </p>
-                <div className="container culture  animated swing">
-                        <div className="row">
-                        {item.map((item, key) =>
-                            <div key={key} className="col">
-                                <img src={item.name} />
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col">
-                                         <div className="text-primary"> N {item.price} </div>
-                                        </div>
-                                        <div className="col">
-                                            <i className="btn btn-success" onClick={()=>this.handleToCart(item.id, item.name, item.price)}> Buy </i>
-                                           
-                                        </div>
-                                    </div>
-                                        
-                                </div>
-                                
-                            </div>
-                            
-                        )}
-                        {exist ?
-                            (<p>  This Item Has Been Added To Cart</p>)
-                            :
-                            <p>  </p>}
-                        </div>
-                    
+        GetProduct()
+        axios.get(URL + "/getproduct/")
+            .then((resp) => {
+                let data = resp.data
+                let women = data.filter(item => item.product_category === "WOMEN")
+                let men = data.filter(item => item.product_category === "MEN")
+                let a =women.slice( 1, 6)
                 
+               console.log("sliec data",a)
+                this.setState({
+                    items: data,
+                    men : men,
+                    women : women
+                })
+                 console.log(this.state.items )
+                
+            })
 
-                       
-                    
-               </div>
-              
-        </div>
-
-
-
-        )
+    }
+  handleToCart = (product_id, name,price) => {
+        console.log(product_id)
+        this.props.AddToCart(product_id)
+     this.setState({show: true}, ()=>{
+     window.setTimeout(()=>{
+         this.setState({ show : false})
+     },2000)
+    })
+     }
+    render() {
+        let women = this.state.women
+        let men =  this.state.men
+        
+        return (
+          <div>
+            <div>
+              <div className="container gallary">
+                <Gallary />
+                
+              </div>
+              <p className="women text-right btn-info">
+                <a href="/men"> Get All Men's Wear.... </a>
+              </p>
+              <div className="container animated swing">
+                <Alert color="info" isOpen={this.state.show}>
+                  Item Added To Cart
+                </Alert>
+                <div className="row">
+                  {men.map((item, key) => (
+                    <div key={key} className="col">
+                      <span className="card card-body bg-light">
+                        <img className="image " src={URL + item.image} alt={item.image}/>
+                        <span
+                          onClick={() => this.handleToCart(item.product_id)}
+                          className=" addTocart  btn-info"
+                        >
+                          +
+                        </span>
+                        {"N" + item.product_price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="women btn-info text-right">
+                <a href="/women"> Get All Women's Wear......</a>
+              </p>
+              <div className="container   animated swing">
+                <Alert color="info" isOpen={this.state.show}>
+                  Item Added To Cart
+                </Alert>
+                <div className="row">
+                  {women.map((item, key) => (
+                    <div
+                      key={key}
+                      className="col"
+                      onClick={() => this.handleToCart(item.product_id)}
+                    >
+                      <span className="card card-body">
+                        <img className="image " src={URL + item.image} alt={item.image} />
+                        <span
+                          onClick={() => this.handleToCart(item.product_id)}
+                          className=" addTocart  btn-info"
+                        >
+                          +
+                        </span>
+                        {"N" + item.product_price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
     }  
 }
 

@@ -3,13 +3,15 @@ import { Balance} from "../reducer/Action"
 import PaystackButton from 'react-paystack'
 import { BALANCE } from "../reducer/cart-actions"
 import {connect} from "react-redux"
+import {URL, KEY} from "../asset/asset"
+import axios from "axios"
 
 const MapstateToProps =(state) =>{
-    console.log()
     return {
-        balance: state.balance,
-        cost : state.total_cost,
+       // user: state.user,
+        cost: state.amount_to_credit,
         email : state.email,
+        user_id: state.user_id
     }
 
 }
@@ -24,20 +26,40 @@ const MapDispatchToProps =(dispatch) =>{
 
 
 class Payment extends Component {
+    constructor(){
+        super()
+        this.state= {
+            email: "",
+            user_id :"",
+            amount: 0,
+          
 
-    state = {
-        key: "pk_test_204cf2fadfce622574c2cc420051688ea10b12fa", 
-        email: "",
-        amount: 0,
     }
 
-    callback = (response) => {
-        console.log(response," payment made successfully");
-        if (response.status === "Success"){
-            this.setState({
+   }
+        componentDidMount() {
+      this.setState({
+          email  :  this.props.email,
+          user_id: this.props.user_id,
+          amount : this.props.cost * 100
+      }, ()=>{
+          console.log("payment" ,this.state.email, this.state.user_id)
+      })
+       
 
-
-            })
+    }
+    callback = (resp) => {
+        console.log(resp," payment made successfully");
+        if (resp.status === "Success"){
+            console.log(resp.data)
+            const data={wallet : this.state.amount}
+           axios.post(URL+ "/updateuser/" + this.state.user_id + "/", data)
+           .then((resp), ()=>{
+               console.log("update sucessful")
+           })
+           .catch((error)=>{
+               console.log(error)
+           })
         }
 
 
@@ -45,7 +67,7 @@ class Payment extends Component {
       
 
     close = () => {
-        console.log("Payment closed");
+        console.log("Payment closed" );
     }
 
     getReference = () => {
@@ -59,22 +81,9 @@ class Payment extends Component {
         return text;
     }
 
-    componentDidMount(){
-        const { balance, cost, email } = this.props
-        console.log(cost, "balance")
-        const amount = (parseInt(cost)* 100) 
-        this.setState({
-            balance : balance,
-            email : email,
-            amount : amount
-
-        })
-
-    }
-
     render() {
-       
         
+       
         return (
             <div className="payment">
                 <div className="row">
@@ -89,8 +98,8 @@ class Payment extends Component {
                         reference={this.getReference()}
                         email={this.state.email}
                         amount={this.state.amount}
-                        paystackkey={this.state.key}
-                        tag="btn"
+                        paystackkey={KEY}
+                        tag="button"
                     />
                 </div>
                 </div>

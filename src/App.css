@@ -26,10 +26,6 @@
 
 }
 
-.login{
-  margin-top: 2%;
-  margin-bottom: 1%;
-}
 
 
 
@@ -48,71 +44,126 @@
   background:#87ceeb;
 }
 
-.card{
-  max-width: 500px;
-  
- 
-  
-}
-.login-input{
-    max-block-size: 300px;
-}
-
-.culture,.gallary{
-  margin-top: 40px;
+.cart ,.gallary{
+  margin-top: 100px;
 }
 
 
 input[type="text"],
+input[type="file"],
 input[type="password"],
- button[type="submit"]{
+.select [type="text"],
+.btn,
+button[type="submit"]{
   margin-top:10px ;
   width: 50%;
   padding: 10px;
   border-radius: 40px;
   outline: none;
+  margin-top: 40px;
+  height: 60;
 
  
 }
 
-
-textarea[type="textarea"]{
-    width: 51%;
-    height: 200px;
-    padding:10px;
-    margin-top: 15px;
-    border-radius: 40px;
-     outline: none;
-     
-   
-}
-
 @media(max-width:700px){
-  input[type="text"],button[type="submit"],  input[type="password"]{
+  input[type="text"],button[type="submit"],input[type="file"], 
+  .select[type="text"] , input[type="password"] , .btn{
   margin:1px ;
-  width: 100%!important;
+  width: 90%!important;
+  height: 80%;
   padding: 1px;
    border-radius: 40px;
     outline: none;
+    margin-top: 40px;
+    height: 60px;
   }
+}
+.SocialIcon{
+  margin: 10px;
+  padding: 10px;
+
 }
 
 
 @media (max-width:700px){
 .btn{
   margin:10px ;
-  width: 100%;
+  width: 90%;
   padding: 10px;
 border-radius: 40px;
+height: 80%;
 outline: none;
   
   }
 }
-.tittle,.comment, input{
+
+.comment, input{
     text-align: center;
     align-content: center;
 }
 
 .payment{
 margin-top: 50px;
+}
+
+@media (max-width:700px){
+  .image{
+    width: 80px;
+  }
+}
+
+.image{
+  width: 120px;
+  height: 100px;
+}
+.prevent{
+  width: 400px;
+  height: 200px;
+
+}
+.ca{
+  padding: 6px;
+  width: 4px;
+  float: 0;
+
+}
+.price{
+  height: 200px;
+}
+.card-tittle{
+  height: 10px;
+}
+.card-footer{
+  height: 40px;
+}
+.card{
+  width: 120px;
+  margin: 10px;
+  height: 200px;
+  
+}
+.card-body-m{
+  height: 80px;
+}
+.card-body{
+  width: 130px;
+  
+  
+ 
+  
+}
+
+.women{
+  margin-top: 20px;
+  background:#87ceeb ;
+}
+
+
+.no-item{
+  margin-top: 200px;
+  
+}
+.pay-1{
+  border-radius: 30%;
 }
